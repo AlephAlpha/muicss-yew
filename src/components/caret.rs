@@ -1,10 +1,11 @@
 use yew::prelude::*;
 
-#[derive(Copy, Clone)]
-pub enum Direction {
-    Up,
-    Right,
-    Left,
+prop_enum! {
+    Direction {
+        Up => "up",
+        Right => "right",
+        Left => "left",
+    }
 }
 
 #[derive(Clone, Properties)]
@@ -30,21 +31,13 @@ impl Component for Caret {
 
     fn view(&self) -> Html {
         const CARET_CLASS: &str = "mui-caret";
-        let mut classes = Classes::new();
-        classes.push(CARET_CLASS);
+        let mut class = Classes::new();
+        class.push(CARET_CLASS);
         if let Some(direction) = self.props.direction {
-            classes.push(&format!(
-                "{}--{}",
-                CARET_CLASS,
-                match direction {
-                    Direction::Up => "up",
-                    Direction::Right => "right",
-                    Direction::Left => "left",
-                }
-            ));
+            class.push(&direction.class(CARET_CLASS));
         }
         html! {
-            <span class=classes></span>
+            <span class=class></span>
         }
     }
 }

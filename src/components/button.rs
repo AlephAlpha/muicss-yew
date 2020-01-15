@@ -1,24 +1,27 @@
 use yew::prelude::*;
 
-#[derive(Copy, Clone)]
-pub enum Color {
-    Primary,
-    Dark,
-    Danger,
-    Accent,
+prop_enum! {
+    Color {
+        Primary => "primary",
+        Danger => "danger",
+        Dark => "dark",
+        Accent => "accent",
+    }
 }
 
-#[derive(Copy, Clone)]
-pub enum Size {
-    Small,
-    Large,
+prop_enum! {
+    Size {
+        Small => "small",
+        Large => "large",
+    }
 }
 
-#[derive(Copy, Clone)]
-pub enum Variant {
-    Flat,
-    Raised,
-    Fab,
+prop_enum! {
+    Variant {
+        Flat => "flat",
+        Raised => "raised",
+        Fab => "fab",
+    }
 }
 
 #[derive(Clone, Properties)]
@@ -71,37 +74,13 @@ impl Component for Button {
         class.push(BTN_CLASS);
         let onclick = self.link.callback(Msg::Click);
         if let Some(color) = self.props.color {
-            class.push(&format!(
-                "{}--{}",
-                BTN_CLASS,
-                match color {
-                    Color::Primary => "primary",
-                    Color::Dark => "dark",
-                    Color::Danger => "danger",
-                    Color::Accent => "accent",
-                }
-            ));
+            class.push(&color.class(BTN_CLASS));
         }
         if let Some(size) = self.props.size {
-            class.push(&format!(
-                "{}--{}",
-                BTN_CLASS,
-                match size {
-                    Size::Small => "small",
-                    Size::Large => "large",
-                }
-            ));
+            class.push(&size.class(BTN_CLASS));
         }
         if let Some(variant) = self.props.variant {
-            class.push(&format!(
-                "{}--{}",
-                BTN_CLASS,
-                match variant {
-                    Variant::Flat => "flat",
-                    Variant::Raised => "raised",
-                    Variant::Fab => "fab",
-                }
-            ));
+            class.push(&variant.class(BTN_CLASS));
         }
         html! {
             <button ref=self.node_ref.clone()
