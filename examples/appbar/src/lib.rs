@@ -1,14 +1,14 @@
 use muicss_yew::components::appbar::Appbar;
 use yew::prelude::*;
 
-pub struct Example;
+pub struct App;
 
-impl Component for Example {
+impl Component for App {
     type Message = ();
     type Properties = ();
 
     fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Example
+        App
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -17,7 +17,11 @@ impl Component for Example {
 
     fn view(&self) -> Html {
         html! {
-            <Appbar></Appbar>
+            <Appbar class=Classes::from("test")>
+                <div class="mui-container">
+                    <h1> { "Appbar" } </h1>
+                </div>
+            </Appbar>
         }
     }
 }

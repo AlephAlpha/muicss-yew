@@ -3,7 +3,7 @@ use yew::prelude::*;
 #[derive(Clone, Properties)]
 pub struct Props {
     pub children: Children,
-    pub classes: Classes,
+    pub class: Classes,
 }
 
 pub struct Appbar {
@@ -23,10 +23,10 @@ impl Component for Appbar {
     }
 
     fn view(&self) -> Html {
-        let mut classes = self.props.classes.clone();
-        classes.push("mui-appbar");
+        let mut class = self.props.class.clone();
+        class.push("mui-appbar");
         html! {
-            <div class=classes>
+            <div class=class>
                 { self.props.children.render() }
             </div>
         }

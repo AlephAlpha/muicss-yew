@@ -24,11 +24,12 @@ pub enum Variant {
 #[derive(Clone, Properties)]
 pub struct Props {
     pub children: Children,
-    pub classes: Classes,
+    pub class: Classes,
     pub onclick: Option<Callback<ClickEvent>>,
     pub color: Option<Color>,
     pub size: Option<Size>,
     pub variant: Option<Variant>,
+    pub disabled: bool,
 }
 
 pub enum Msg {
@@ -66,11 +67,11 @@ impl Component for Button {
 
     fn view(&self) -> Html {
         const BTN_CLASS: &str = "mui-btn";
-        let mut classes = self.props.classes.clone();
-        classes.push(BTN_CLASS);
+        let mut class = self.props.class.clone();
+        class.push(BTN_CLASS);
         let onclick = self.link.callback(Msg::Click);
         if let Some(color) = self.props.color {
-            classes.push(&format!(
+            class.push(&format!(
                 "{}--{}",
                 BTN_CLASS,
                 match color {
@@ -82,7 +83,7 @@ impl Component for Button {
             ));
         }
         if let Some(size) = self.props.size {
-            classes.push(&format!(
+            class.push(&format!(
                 "{}--{}",
                 BTN_CLASS,
                 match size {
@@ -92,11 +93,11 @@ impl Component for Button {
             ));
         }
         if let Some(variant) = self.props.variant {
-            classes.push(&format!(
+            class.push(&format!(
                 "{}--{}",
                 BTN_CLASS,
                 match variant {
-                    Variant::Flat => "flt",
+                    Variant::Flat => "flat",
                     Variant::Raised => "raised",
                     Variant::Fab => "fab",
                 }
@@ -104,8 +105,9 @@ impl Component for Button {
         }
         html! {
             <button ref=self.node_ref.clone()
-                class=classes
-                onclick=onclick>
+                class=class
+                onclick=onclick
+                disabled=self.props.disabled>
                 { self.props.children.render() }
             </button>
         }
