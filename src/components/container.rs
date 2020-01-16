@@ -4,18 +4,19 @@ use yew::prelude::*;
 pub struct Props {
     pub children: Children,
     pub class: Classes,
+    pub fluid: bool,
 }
 
-pub struct Appbar {
+pub struct Container {
     props: Props,
 }
 
-impl Component for Appbar {
+impl Component for Container {
     type Message = ();
     type Properties = Props;
 
     fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Appbar { props }
+        Container { props }
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -23,9 +24,14 @@ impl Component for Appbar {
     }
 
     fn view(&self) -> Html {
-        const APPBAR_CLASS: &str = "mui-appbar";
+        const CONTAINER_CLASS: &str = "mui-container";
+        const CONTAINER_CLASS_FLUID: &str = "mui-container-fluid";
         let mut class = self.props.class.clone();
-        class.push(APPBAR_CLASS);
+        class.push(if self.props.fluid {
+            CONTAINER_CLASS_FLUID
+        } else {
+            CONTAINER_CLASS
+        });
         html! {
             <div class=class>
                 { self.props.children.render() }

@@ -72,7 +72,6 @@ impl Component for Button {
         const BTN_CLASS: &str = "mui-btn";
         let mut class = self.props.class.clone();
         class.push(BTN_CLASS);
-        let onclick = self.link.callback(Msg::Click);
         if let Some(color) = self.props.color {
             class.push(&color.class(BTN_CLASS));
         }
@@ -82,6 +81,7 @@ impl Component for Button {
         if let Some(variant) = self.props.variant {
             class.push(&variant.class(BTN_CLASS));
         }
+        let onclick = self.link.callback(Msg::Click);
         html! {
             <button ref=self.node_ref.clone()
                 class=class
