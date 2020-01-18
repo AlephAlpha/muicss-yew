@@ -57,8 +57,8 @@ impl Component for Checkbox {
                         checked=self.props.checked
                         onchange=onchange
                         disabled=self.props.disabled
-                        value=self.props.value.clone().unwrap_or("on".to_owned()) />
-                    { self.props.label.clone() }
+                        value=self.props.value.as_deref().unwrap_or("on") />
+                    { &self.props.label }
                 </label>
             </div>
         }

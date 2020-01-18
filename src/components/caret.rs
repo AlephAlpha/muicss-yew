@@ -31,8 +31,7 @@ impl Component for Caret {
 
     fn view(&self) -> Html {
         const CARET_CLASS: &str = "mui-caret";
-        let mut class = Classes::new();
-        class.push(CARET_CLASS);
+        let mut class = Classes::from(CARET_CLASS);
         if let Some(direction) = self.props.direction {
             class.push(&direction.class(CARET_CLASS));
         }
