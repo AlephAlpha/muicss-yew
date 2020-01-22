@@ -4,19 +4,18 @@ use yew::prelude::*;
 pub struct Props {
     pub children: Children,
     pub class: Classes,
-    pub inline: bool,
 }
 
-pub struct Form {
+pub struct Row {
     props: Props,
 }
 
-impl Component for Form {
+impl Component for Row {
     type Message = ();
     type Properties = Props;
 
     fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Form { props }
+        Row { props }
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -24,17 +23,13 @@ impl Component for Form {
     }
 
     fn view(&self) -> Html {
-        const FORM_CLASS: &str = "mui-form";
-        const FORM_CLASS_INLINE: &str = "mui-form--inline";
+        const ROW_CLASS: &str = "mui-row";
         let mut class = self.props.class.clone();
-        class.push(FORM_CLASS);
-        if self.props.inline {
-            class.push(FORM_CLASS_INLINE);
-        }
+        class.push(ROW_CLASS);
         html! {
-            <form class=class>
+            <div class=class>
                 { self.props.children.render() }
-            </form>
+            </div>
         }
     }
 }

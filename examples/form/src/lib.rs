@@ -23,77 +23,101 @@ impl Component for App {
                 <h1> { "Form" } </h1>
                 <div class="mui-panel">
                     <div id="example1">
-                        <Form>
-                            <legend>  { "Title" } </legend>
-                            <div class="mui-textfield">
-                                <input type="text" />
-                            </div>
-                            <button class="mui-btn"> { "Button" } </button>
-                        </Form>
+                        { example1() }
                     </div>
                 </div>
                 <div class="mui-panel">
                     <div id="example2">
-                        <Form>
-                            <fieldset>
-                                <legend>  { "Fieldset1" } </legend>
-                                <div class="mui-textfield">
-                                    <input type="text" />
-                                </div>
-                                <div class="mui-textfield">
-                                    <input type="text" />
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <legend>  { "Fieldset2" } </legend>
-                                <div class="mui-textfield">
-                                    <input type="text" />
-                                </div>
-                                <div class="mui-textfield">
-                                    <input type="text" />
-                                </div>
-                            </fieldset>
-                            <button class="mui-btn"> { "Button" } </button>
-                        </Form>
+                        { example2() }
                     </div>
                 </div>
                 <div class="mui-panel">
                     <div id="example3">
-                        <Form inline=true>
-                            <legend>  { "Title" } </legend>
-                            <div class="mui-textfield">
-                                <input type="text" />
-                            </div>
-                            <button class="mui-btn"> { "Button" } </button>
-                        </Form>
+                        { example3() }
                     </div>
                 </div>
                 <div class="mui-panel">
                     <div id="example4">
-                        <Form inline=true>
-                            <fieldset>
-                                <legend>  { "Fieldset1" } </legend>
-                                <div class="mui-textfield">
-                                    <input type="text" />
-                                </div>
-                                <div class="mui-textfield">
-                                    <input type="text" />
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <legend>  { "Fieldset2" } </legend>
-                                <div class="mui-textfield">
-                                    <input type="text" />
-                                </div>
-                                <div class="mui-textfield">
-                                    <input type="text" />
-                                </div>
-                            </fieldset>
-                            <button class="mui-btn"> { "Button" } </button>
-                        </Form>
+                        { example4() }
                     </div>
                 </div>
             </div>
         }
+    }
+}
+
+fn example1() -> Html {
+    html! {
+        <Form>
+            <legend>  { "Title" } </legend>
+            <div class="mui-textfield">
+                <input type="text" />
+            </div>
+            <button class="mui-btn"> { "Button" } </button>
+        </Form>
+    }
+}
+
+fn example2() -> Html {
+    html! {
+        <Form>
+            <fieldset>
+                <legend>  { "Fieldset1" } </legend>
+                <div class="mui-textfield">
+                    <input type="text" />
+                </div>
+                <div class="mui-textfield">
+                    <input type="text" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>  { "Fieldset2" } </legend>
+                <div class="mui-textfield">
+                    <input type="text" />
+                </div>
+                <div class="mui-textfield">
+                    <input type="text" />
+                </div>
+            </fieldset>
+            <button class="mui-btn"> { "Button" } </button>
+        </Form>
+    }
+}
+
+fn example3() -> Html {
+    html! {
+        <Form inline=true>
+            <legend>  { "Title" } </legend>
+            <div class="mui-textfield">
+                <input type="text" />
+            </div>
+            <button class="mui-btn"> { "Button" } </button>
+        </Form>
+    }
+}
+
+fn example4() -> Html {
+    html! {
+        <Form inline=true>
+            <fieldset>
+                <legend>  { "Fieldset1" } </legend>
+                <div class="mui-textfield">
+                    <input type="text" />
+                </div>
+                <div class="mui-textfield">
+                    <input type="text" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>  { "Fieldset2" } </legend>
+                <div class="mui-textfield">
+                    <input type="text" />
+                </div>
+                <div class="mui-textfield">
+                    <input type="text" />
+                </div>
+            </fieldset>
+            <button class="mui-btn"> { "Button" } </button>
+        </Form>
     }
 }

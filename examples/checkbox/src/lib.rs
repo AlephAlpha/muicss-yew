@@ -27,10 +27,10 @@ impl Component for App {
                         <Checkbox label="Option two" value=Some("opt2".to_owned()) checked=true />
                     </div>
                     <div id="example3">
-                    <Checkbox label="Option three"
-                        value=Some("opt3".to_owned())
-                        checked=true
-                        disabled=true />
+                        <Checkbox label="Option three"
+                            value=Some("opt3".to_owned())
+                            checked=true
+                            disabled=true />
                     </div>
                 </div>
             </div>

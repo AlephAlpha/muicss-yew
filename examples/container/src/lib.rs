@@ -21,14 +21,14 @@ impl Component for App {
                 <div id="container-example1">
                     <Container>
                         <h1> { "Container" } </h1>
-                        <div className="mui-panel">
+                        <div class="mui-panel">
                         </div>
                     </Container>
                 </div>
                 <div id="container-example2">
                     <Container fluid=true>
                         <h1> { "Fluid Container" } </h1>
-                        <div className="mui-panel"></div>
+                        <div class="mui-panel"></div>
                     </Container>
                 </div>
             </>
