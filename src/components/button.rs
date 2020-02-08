@@ -1,5 +1,8 @@
 use std::time::Duration;
-use stdweb::web::{event::IMouseEvent, HtmlElement, IHtmlElement};
+use stdweb::web::{
+    event::{IMouseEvent, ITouchEvent},
+    HtmlElement, IHtmlElement,
+};
 use yew::{
     prelude::*,
     services::{timeout::TimeoutTask, TimeoutService},
@@ -43,9 +46,10 @@ pub struct Props {
 pub enum Msg {
     Click(ClickEvent),
     MouseDown(MouseDownEvent),
-    MouseUp(MouseUpEvent),
-    MouseLeave(MouseLeaveEvent),
-    Animate,
+    TouchStart(TouchStart),
+    TouchEnd,
+    ShowRipple,
+    HideRipple,
 }
 
 struct RippleStyle {
@@ -65,38 +69,83 @@ impl RippleStyle {
     }
 }
 
+pub struct Ripple {
+    style: Option<RippleStyle>,
+    is_visible: bool,
+    is_animating: bool,
+    timeout: TimeoutService,
+    task: Option<TimeoutTask>,
+}
+
+impl Ripple {
+    fn new() -> Self {
+        Ripple {
+            style: None,
+            is_visible: false,
+            is_animating: true,
+            timeout: TimeoutService::new(),
+            task: None,
+        }
+    }
+
+    fn class(&self) -> Classes {
+        let mut class = Classes::from("mui-ripple");
+        if self.is_visible {
+            class.push("mui--is-visible");
+        }
+        if self.is_animating {
+            class.push("mui--is-animating");
+        }
+        class
+    }
+
+    fn style(&self) -> String {
+        if let Some(style) = &self.style {
+            style.to_style()
+        } else {
+            String::new()
+        }
+    }
+
+    fn render(&self) -> Html {
+        html! {
+            <span class="mui-btn__ripple-container">
+                <span class=self.class()
+                    style=self.style()>
+                </span>
+            </span>
+        }
+    }
+}
+
 pub struct Button {
     link: ComponentLink<Self>,
     props: Props,
-    ripple_style: Option<RippleStyle>,
-    ripple_is_visible: bool,
-    ripple_is_animating: bool,
-    ripple_animation_timeout: TimeoutService,
-    ripple_animation_task: Option<TimeoutTask>,
+    ripple: Ripple,
     node_ref: NodeRef,
-    ripple_ref: NodeRef,
 }
 
 impl Button {
-    fn show_ripple(&mut self, event: MouseDownEvent) {
+    fn show_ripple(&mut self, offset: (f64, f64)) {
         if let Some(element) = self.node_ref.try_into::<HtmlElement>() {
-            let offset = (event.offset_x(), event.offset_y());
             let size = (element.offset_width(), element.offset_height());
             let radius = ((size.0 * size.0 + size.1 * size.1) as f64).sqrt();
-            self.ripple_style = Some(RippleStyle { offset, radius });
-            self.ripple_is_visible = true;
-            self.ripple_is_animating = false;
-            let animation = self.link.callback(|_| Msg::Animate);
-            let task = self
-                .ripple_animation_timeout
-                .spawn(Duration::default(), animation);
-            self.ripple_animation_task = Some(task);
+            self.ripple.style = Some(RippleStyle { offset, radius });
+            self.ripple.is_visible = true;
+            self.ripple.is_animating = false;
+            let timeout = self.link.callback(|_| Msg::ShowRipple);
+            let task = self.ripple.timeout.spawn(Duration::default(), timeout);
+            self.ripple.task = Some(task);
         }
     }
 
     fn hide_ripple(&mut self) {
-        self.ripple_style = None;
-        self.ripple_is_visible = false;
+        let timeout = self.link.callback(|_| Msg::HideRipple);
+        let task = self
+            .ripple
+            .timeout
+            .spawn(Duration::from_millis(10), timeout);
+        self.ripple.task = Some(task);
     }
 }
 
@@ -108,13 +157,8 @@ impl Component for Button {
         Button {
             link,
             props,
-            ripple_style: None,
-            ripple_is_visible: false,
-            ripple_is_animating: true,
-            ripple_animation_timeout: TimeoutService::new(),
-            ripple_animation_task: None,
+            ripple: Ripple::new(),
             node_ref: NodeRef::default(),
-            ripple_ref: NodeRef::default(),
         }
     }
 
@@ -125,10 +169,24 @@ impl Component for Button {
                     callback.emit(e);
                 }
             }
-            Msg::MouseDown(e) => self.show_ripple(e),
-            Msg::MouseUp(_e) => self.hide_ripple(),
-            Msg::MouseLeave(_e) => self.hide_ripple(),
-            Msg::Animate => self.ripple_is_animating = true,
+            Msg::MouseDown(e) => {
+                let offset = (e.offset_x(), e.offset_y());
+                self.show_ripple(offset);
+            }
+            Msg::TouchStart(e) => {
+                if let Some(element) = self.node_ref.try_into::<HtmlElement>() {
+                    let touch = &e.touches()[0];
+                    let rect = element.get_bounding_client_rect();
+                    let offset = (
+                        touch.client_x() - rect.get_left(),
+                        touch.client_y() - rect.get_top(),
+                    );
+                    self.show_ripple(offset);
+                }
+            }
+            Msg::TouchEnd => self.hide_ripple(),
+            Msg::ShowRipple => self.ripple.is_animating = true,
+            Msg::HideRipple => self.ripple.is_visible = false,
         }
         true
     }
@@ -147,25 +205,10 @@ impl Component for Button {
             class.push(&variant.class(BTN_CLASS));
         }
 
-        let mut ripple_class = Classes::from("mui-ripple");
-        if self.ripple_is_visible {
-            ripple_class.push("mui--is-visible");
-        }
-        if self.ripple_is_animating {
-            ripple_class.push("mui--is-animating");
-        }
-
         let onclick = self.link.callback(Msg::Click);
         let onmousedown = self.link.callback(Msg::MouseDown);
-        let onmouseup = self.link.callback(Msg::MouseUp);
-        let onmouseleave = self.link.callback(Msg::MouseLeave);
-
-        let ripple_style = if let Some(style) = &self.ripple_style {
-            style.to_style()
-        } else {
-            String::new()
-        };
-
+        let onmouseup = self.link.callback(|_| Msg::TouchEnd);
+        let onmouseleave = self.link.callback(|_| Msg::TouchEnd);
         html! {
             <button ref=self.node_ref.clone()
                 class=class
@@ -175,12 +218,7 @@ impl Component for Button {
                 onmouseleave=onmouseleave
                 disabled=self.props.disabled>
                 { self.props.children.render() }
-                <span class="mui-btn__ripple-container">
-                    <span ref=self.ripple_ref.clone()
-                        class=ripple_class
-                        style=ripple_style>
-                    </span>
-                </span>
+                { self.ripple.render() }
             </button>
         }
     }
