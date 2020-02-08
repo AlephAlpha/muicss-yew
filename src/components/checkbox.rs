@@ -13,7 +13,6 @@ pub struct Props {
 pub struct Checkbox {
     link: ComponentLink<Self>,
     props: Props,
-    node_ref: NodeRef,
 }
 
 pub enum Msg {
@@ -25,11 +24,7 @@ impl Component for Checkbox {
     type Properties = Props;
 
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Checkbox {
-            link,
-            props,
-            node_ref: NodeRef::default(),
-        }
+        Checkbox { link, props }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
@@ -52,8 +47,7 @@ impl Component for Checkbox {
         html! {
             <div class=class>
                 <label>
-                    <input ref=self.node_ref.clone()
-                        type="checkbox"
+                    <input type="checkbox"
                         checked=self.props.checked
                         onchange=onchange
                         disabled=self.props.disabled

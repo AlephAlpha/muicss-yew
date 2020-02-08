@@ -8,6 +8,7 @@ edition = "2018"
 
 [dependencies]
 yew = "0.11.0"
+stdweb = "0.4.20"
 
 [workspace]
 members = ["examples/*"]
