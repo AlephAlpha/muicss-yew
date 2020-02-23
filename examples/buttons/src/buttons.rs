@@ -32,25 +32,25 @@ impl Component for Buttons {
                     disabled=self.props.disabled>
                     { "Button" }
                 </Button>
-                <Button color=Some(Color::Primary)
+                <Button color=Color::Primary
                     variant=self.props.variant
                     size=self.props.size
                     disabled=self.props.disabled>
                     { "Button" }
                 </Button>
-                <Button color=Some(Color::Danger)
+                <Button color=Color::Danger
                     variant=self.props.variant
                     size=self.props.size
                     disabled=self.props.disabled>
                     { "Button" }
                 </Button>
-                <Button color=Some(Color::Dark)
+                <Button color=Color::Dark
                     variant=self.props.variant
                     size=self.props.size
                     disabled=self.props.disabled>
                     { "Button" }
                 </Button>
-                <Button color=Some(Color::Accent)
+                <Button color=Color::Accent
                     variant=self.props.variant
                     size=self.props.size
                     disabled=self.props.disabled>

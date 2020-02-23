@@ -26,31 +26,31 @@ impl Component for FabButtons {
     fn view(&self) -> Html {
         html! {
             <div>
-                <Button variant=Some(Variant::Fab)
+                <Button variant=Variant::Fab
                     size=self.props.size
                     disabled=self.props.disabled>
                     { "+" }
                 </Button>
-                <Button color=Some(Color::Primary)
-                    variant=Some(Variant::Fab)
+                <Button color=Color::Primary
+                    variant=Variant::Fab
                     size=self.props.size
                     disabled=self.props.disabled>
                     { "+" }
                 </Button>
-                <Button color=Some(Color::Danger)
-                    variant=Some(Variant::Fab)
+                <Button color=Color::Danger
+                    variant=Variant::Fab
                     size=self.props.size
                     disabled=self.props.disabled>
                     { "+" }
                 </Button>
-                <Button color=Some(Color::Dark)
-                    variant=Some(Variant::Fab)
+                <Button color=Color::Dark
+                    variant=Variant::Fab
                     size=self.props.size
                     disabled=self.props.disabled>
                     { "+" }
                 </Button>
-                <Button color=Some(Color::Accent)
-                    variant=Some(Variant::Fab)
+                <Button color=Color::Accent
+                    variant=Variant::Fab
                     size=self.props.size
                     disabled=self.props.disabled>
                     { "+" }

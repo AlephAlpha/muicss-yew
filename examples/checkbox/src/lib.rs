@@ -21,14 +21,14 @@ impl Component for App {
                 <h1> { "Checkbox" } </h1>
                 <div class="mui-panel">
                     <div id="example1">
-                        <Checkbox label="Option one" value=Some("opt1".to_owned()) />
+                        <Checkbox label="Option one" value="opt1" />
                     </div>
                     <div id="example2">
-                        <Checkbox label="Option two" value=Some("opt2".to_owned()) checked=true />
+                        <Checkbox label="Option two" value="opt2" checked=true />
                     </div>
                     <div id="example3">
                         <Checkbox label="Option three"
-                            value=Some("opt3".to_owned())
+                            value="opt3"
                             checked=true
                             disabled=true />
                     </div>

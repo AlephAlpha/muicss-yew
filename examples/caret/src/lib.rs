@@ -24,13 +24,13 @@ impl Component for App {
                         <Caret />
                     </div>
                     <div id="caret-up">
-                        <Caret direction=Some(Direction::Up) />
+                        <Caret direction=Direction::Up />
                     </div>
                     <div id="caret-right">
-                        <Caret direction=Some(Direction::Right) />
+                        <Caret direction=Direction::Right />
                     </div>
                     <div id="caret-left">
-                        <Caret direction=Some(Direction::Left) />
+                        <Caret direction=Direction::Left />
                     </div>
                 </div>
             </div>

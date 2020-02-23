@@ -39,31 +39,31 @@ fn example1() -> Html {
     html! {
         <div>
             <Row>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
-                <Col md=Some(1)> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
+                <Col md=1> { "md-1" } </Col>
             </Row>
             <Row>
-                <Col md=Some(8)> { "md-8" } </Col>
-                <Col md=Some(4)> { "md-4" } </Col>
+                <Col md=8> { "md-8" } </Col>
+                <Col md=4> { "md-4" } </Col>
             </Row>
             <Row>
-                <Col md=Some(4)> { "md-4" } </Col>
-                <Col md=Some(4)> { "md-4" } </Col>
-                <Col md=Some(4)> { "md-4" } </Col>
+                <Col md=4> { "md-4" } </Col>
+                <Col md=4> { "md-4" } </Col>
+                <Col md=4> { "md-4" } </Col>
             </Row>
             <Row>
-                <Col md=Some(6)> { "md-6" } </Col>
-                <Col md=Some(6)> { "md-6" } </Col>
+                <Col md=6> { "md-6" } </Col>
+                <Col md=6> { "md-6" } </Col>
             </Row>
         </div>
     }
@@ -73,23 +73,23 @@ fn example2() -> Html {
     html! {
         <div>
             <Row>
-                <Col md=Some(4)>
+                <Col md=4>
                     { "md-4" }
                 </Col>
-                <Col md=Some(4) md_offset=Some(4)>
+                <Col md=4 md_offset=4>
                     { "md-4 md-offset-4" }
                 </Col>
             </Row>
             <Row>
-                <Col md=Some(3) md_offset=Some(3)>
+                <Col md=3 md_offset=3>
                     { "md-3 md-offset-3" }
                 </Col>
-                <Col md=Some(3) md_offset=Some(3)>
+                <Col md=3 md_offset=3>
                     { "md-3 md-offset-3" }
                 </Col>
             </Row>
             <Row>
-                <Col md=Some(6) md_offset=Some(3)>
+                <Col md=6 md_offset=3>
                     { "md-6 md-offset-3" }
                 </Col>
             </Row>

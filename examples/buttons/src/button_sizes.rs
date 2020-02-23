@@ -25,22 +25,22 @@ impl Component for ButtonSizes {
     fn view(&self) -> Html {
         html! {
             <div>
-                <Button color=Some(Color::Primary)
+                <Button color=Color::Primary
                     size=self.props.size>
                     { "Button" }
                 </Button>
-                <Button color=Some(Color::Primary)
-                    variant=Some(Variant::Flat)
+                <Button color=Color::Primary
+                    variant=Variant::Flat
                     size=self.props.size>
                     { "Button" }
                 </Button>
-                <Button color=Some(Color::Primary)
-                    variant=Some(Variant::Raised)
+                <Button color=Color::Primary
+                    variant=Variant::Raised
                     size=self.props.size>
                     { "Button" }
                 </Button>
-                <Button color=Some(Color::Primary)
-                    variant=Some(Variant::Fab)
+                <Button color=Color::Primary
+                    variant=Variant::Fab
                     size=self.props.size>
                     { "+" }
                 </Button>

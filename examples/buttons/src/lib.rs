@@ -36,15 +36,15 @@ impl Component for App {
                 <div id="flat-buttons">
                     <div class="mui-panel">
                         <h3> { "Flat buttons" } </h3>
-                        <Buttons variant=Some(Variant::Flat)/>
-                        <Buttons variant=Some(Variant::Flat) disabled=true />
+                        <Buttons variant=Variant::Flat />
+                        <Buttons variant=Variant::Flat disabled=true />
                     </div>
                 </div>
                 <div id="raised-buttons">
                     <div class="mui-panel">
                         <h3> { "Raised buttons" } </h3>
-                        <Buttons variant=Some(Variant::Raised)/>
-                        <Buttons variant=Some(Variant::Raised) disabled=true />
+                        <Buttons variant=Variant::Raised />
+                        <Buttons variant=Variant::Raised disabled=true />
                     </div>
                 </div>
                 <div id="floating-buttons">
@@ -57,9 +57,9 @@ impl Component for App {
                 <div id="button-sizes">
                     <div class="mui-panel">
                         <h3> { "Button sizes" } </h3>
-                        <ButtonSizes size=Some(Size::Small) />
+                        <ButtonSizes size=Size::Small />
                         <ButtonSizes />
-                        <ButtonSizes size=Some(Size::Large) />
+                        <ButtonSizes size=Size::Large />
                     </div>
                 </div>
             </div>

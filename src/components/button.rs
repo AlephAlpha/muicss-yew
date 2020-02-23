@@ -106,7 +106,9 @@ impl Ripple {
             String::new()
         }
     }
+}
 
+impl Renderable for Ripple {
     fn render(&self) -> Html {
         html! {
             <span class="mui-btn__ripple-container">
@@ -127,7 +129,7 @@ pub struct Button {
 
 impl Button {
     fn show_ripple(&mut self, offset: (f64, f64)) {
-        if let Some(element) = self.node_ref.try_into::<HtmlElement>() {
+        if let Some(element) = self.node_ref.cast::<HtmlElement>() {
             let size = (element.offset_width(), element.offset_height());
             let radius = ((size.0 * size.0 + size.1 * size.1) as f64).sqrt();
             self.ripple.style = Some(RippleStyle { offset, radius });
@@ -174,7 +176,7 @@ impl Component for Button {
                 self.show_ripple(offset);
             }
             Msg::TouchStart(e) => {
-                if let Some(element) = self.node_ref.try_into::<HtmlElement>() {
+                if let Some(element) = self.node_ref.cast::<HtmlElement>() {
                     let touch = &e.touches()[0];
                     let rect = element.get_bounding_client_rect();
                     let offset = (
@@ -209,6 +211,8 @@ impl Component for Button {
         let onmousedown = self.link.callback(Msg::MouseDown);
         let onmouseup = self.link.callback(|_| Msg::TouchEnd);
         let onmouseleave = self.link.callback(|_| Msg::TouchEnd);
+        let ontouchstart = self.link.callback(Msg::TouchStart);
+        let ontouchend = self.link.callback(|_| Msg::TouchEnd);
         html! {
             <button ref=self.node_ref.clone()
                 class=class
@@ -216,6 +220,8 @@ impl Component for Button {
                 onmousedown=onmousedown
                 onmouseup=onmouseup
                 onmouseleave=onmouseleave
+                ontouchstart=ontouchstart
+                ontouchend=ontouchend
                 disabled=self.props.disabled>
                 { self.props.children.render() }
                 { self.ripple.render() }
