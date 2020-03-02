@@ -2,8 +2,11 @@ use yew::prelude::*;
 
 #[derive(Clone, Properties)]
 pub struct Props {
+    #[prop_or_default]
     pub children: Children,
+    #[prop_or_default]
     pub class: Classes,
+    #[prop_or_default]
     pub inline: bool,
 }
 

@@ -2,17 +2,29 @@ use yew::prelude::*;
 
 #[derive(Clone, Properties)]
 pub struct Props {
+    #[prop_or_default]
     pub children: Children,
+    #[prop_or_default]
     pub class: Classes,
+    #[prop_or_default]
     pub xs: Option<u8>,
+    #[prop_or_default]
     pub sm: Option<u8>,
+    #[prop_or_default]
     pub md: Option<u8>,
+    #[prop_or_default]
     pub lg: Option<u8>,
+    #[prop_or_default]
     pub xl: Option<u8>,
+    #[prop_or_default]
     pub xs_offset: Option<u8>,
+    #[prop_or_default]
     pub sm_offset: Option<u8>,
+    #[prop_or_default]
     pub md_offset: Option<u8>,
+    #[prop_or_default]
     pub lg_offset: Option<u8>,
+    #[prop_or_default]
     pub xl_offset: Option<u8>,
 }
 
@@ -48,10 +60,10 @@ impl Component for Col {
         const COL_CLASS: &str = "mui-col";
         let mut class = self.props.class.clone();
         for &(prefix, value, offset_value) in self.props.responsive().iter() {
-            if let &Some(value) = value {
+            if let Some(value) = value {
                 class.push(&format!("{}-{}-{}", COL_CLASS, prefix, value));
             }
-            if let &Some(value) = offset_value {
+            if let Some(value) = offset_value {
                 class.push(&format!("{}-offset-{}-{}", COL_CLASS, prefix, value));
             }
         }

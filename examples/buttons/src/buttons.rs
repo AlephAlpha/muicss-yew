@@ -3,8 +3,11 @@ use yew::prelude::*;
 
 #[derive(Clone, Properties)]
 pub struct Props {
+    #[prop_or_default]
     pub size: Option<Size>,
+    #[prop_or_default]
     pub variant: Option<Variant>,
+    #[prop_or_default]
     pub disabled: bool,
 }
 

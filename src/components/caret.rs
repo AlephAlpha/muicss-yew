@@ -10,6 +10,7 @@ prop_enum! {
 
 #[derive(Clone, Properties)]
 pub struct Props {
+    #[prop_or_default]
     pub direction: Option<Direction>,
 }
 

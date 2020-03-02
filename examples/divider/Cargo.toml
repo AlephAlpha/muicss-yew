@@ -8,4 +8,4 @@ edition = "2018"
 
 [dependencies]
 muicss-yew = { path = "../.." }
-yew = "0.12.0"
+yew = { version = "0.13.0", features = ["std_web"] }

@@ -34,12 +34,19 @@ prop_enum! {
 
 #[derive(Clone, Properties)]
 pub struct Props {
+    #[prop_or_default]
     pub children: Children,
+    #[prop_or_default]
     pub class: Classes,
+    #[prop_or_default]
     pub onclick: Option<Callback<ClickEvent>>,
+    #[prop_or_default]
     pub color: Option<Color>,
+    #[prop_or_default]
     pub size: Option<Size>,
+    #[prop_or_default]
     pub variant: Option<Variant>,
+    #[prop_or_default]
     pub disabled: bool,
 }
 

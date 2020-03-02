@@ -2,11 +2,17 @@ use yew::prelude::*;
 
 #[derive(Clone, Properties)]
 pub struct Props {
+    #[prop_or_default]
     pub class: Classes,
+    #[prop_or_default]
     pub onchange: Option<Callback<ChangeData>>,
+    #[prop_or_default]
     pub checked: bool,
+    #[prop_or_default]
     pub disabled: bool,
+    #[prop_or_default]
     pub label: String,
+    #[prop_or_default]
     pub value: Option<String>,
 }
 
