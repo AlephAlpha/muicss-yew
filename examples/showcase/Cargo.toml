@@ -1,0 +1,20 @@
+[package]
+name = "showcase"
+version = "0.1.0"
+authors = ["AlephAlpha <alephalpha911@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+muicss-yew = { path = "../.." }
+appbar = { path = "../appbar" }
+buttons = { path = "../buttons" }
+caret = { path = "../caret" }
+checkbox = { path = "../checkbox" }
+container = { path = "../container" }
+divider = { path = "../divider" }
+form = { path = "../form" }
+grid = { path = "../grid" }
+panel = { path = "../panel" }
+yew = { version = "0.13.0", features = ["std_web"] }
