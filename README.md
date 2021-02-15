@@ -4,8 +4,6 @@
 
 :construction: WIP
 
-## Other Yew component libraries
+I'm not familiar with frontend development, and does not have a lot of time to maintain this library. But using MUI-CSS directory (i.e., with CSS and JS) with Yew as also very easy.
 
-- [yewstrap/yewstrap](https://github.com/yewstrap/yewstrap)
-- [Follpvosten/yew-mdc](https://github.com/Follpvosten/yew-mdc)
-- [jetli/mdc-rs](https://github.com/jetli/mdc-rs)
+For other Yew component libraries, please see[awesome-yew](https://github.com/jetli/awesome-yew#component-libraries).

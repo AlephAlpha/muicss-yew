@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-#[derive(Clone, Properties)]
+#[derive(PartialEq, Clone, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub children: Children,
@@ -24,13 +24,21 @@ impl Component for Appbar {
         false
     }
 
+    fn change(&mut self, props: Self::Properties) -> ShouldRender {
+        if self.props != props {
+            self.props = props;
+            true
+        } else {
+            false
+        }
+    }
+
     fn view(&self) -> Html {
         const APPBAR_CLASS: &str = "mui-appbar";
-        let mut class = self.props.class.clone();
-        class.push(APPBAR_CLASS);
+        let class = self.props.class.clone().extend(APPBAR_CLASS);
         html! {
             <div class=class>
-                { self.props.children.render() }
+                { self.props.children.clone() }
             </div>
         }
     }
