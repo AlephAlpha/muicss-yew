@@ -1,4 +1,5 @@
 use yew::prelude::*;
+use yewtil::NeqAssign;
 
 prop_enum! {
     Color {
@@ -63,12 +64,7 @@ impl Component for Button {
     }
 
     fn change(&mut self, props: Self::Properties) -> ShouldRender {
-        if self.props != props {
-            self.props = props;
-            true
-        } else {
-            false
-        }
+        self.props.neq_assign(props)
     }
 
     fn view(&self) -> Html {
