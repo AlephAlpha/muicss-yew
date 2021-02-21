@@ -3,7 +3,7 @@
 /// A macro to generate HTML class names from enums.
 macro_rules! prop_enum {
     ($name:ident {$($choice:ident => $string:literal),* $(,)?}) => {
-        #[derive(Copy, Clone, PartialEq, Eq)]
+        #[derive(Copy, Clone, Debug, PartialEq, Eq)]
         pub enum $name {
             $($choice),*
         }

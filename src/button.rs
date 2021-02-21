@@ -24,14 +24,14 @@ prop_enum! {
     }
 }
 
-#[derive(PartialEq, Clone, Properties)]
+#[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub children: Children,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
-    pub onclick: Option<Callback<MouseEvent>>,
+    pub onclick: Callback<MouseEvent>,
     #[prop_or_default]
     pub color: Option<Color>,
     #[prop_or_default]
@@ -42,37 +42,24 @@ pub struct Props {
     pub disabled: bool,
 }
 
-pub enum Msg {
-    Click(MouseEvent),
-}
-
 pub struct Button {
-    link: ComponentLink<Self>,
     props: Props,
     node_ref: NodeRef,
 }
 
 impl Component for Button {
-    type Message = Msg;
+    type Message = ();
     type Properties = Props;
 
-    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
         Button {
-            link,
             props,
             node_ref: NodeRef::default(),
         }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-            Msg::Click(e) => {
-                if let Some(callback) = &self.props.onclick {
-                    callback.emit(e);
-                }
-            }
-        }
-        true
+    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+        false
     }
 
     fn change(&mut self, props: Self::Properties) -> ShouldRender {
@@ -95,11 +82,10 @@ impl Component for Button {
             .extend(self.props.size.map(|c| c.class(BTN_CLASS)))
             .extend(self.props.variant.map(|c| c.class(BTN_CLASS)));
 
-        let onclick = self.link.callback(Msg::Click);
         html! {
             <button ref=self.node_ref.clone()
                 class=class
-                onclick=onclick
+                onclick=&self.props.onclick
                 disabled=self.props.disabled>
                 { self.props.children.clone() }
             </button>

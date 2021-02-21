@@ -8,7 +8,7 @@ prop_enum! {
     }
 }
 
-#[derive(Clone, Properties)]
+#[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub direction: Option<Direction>,
@@ -30,12 +30,19 @@ impl Component for Caret {
         false
     }
 
+    fn change(&mut self, props: Self::Properties) -> ShouldRender {
+        if self.props != props {
+            self.props = props;
+            true
+        } else {
+            false
+        }
+    }
+
     fn view(&self) -> Html {
         const CARET_CLASS: &str = "mui-caret";
-        let mut class = Classes::from(CARET_CLASS);
-        if let Some(direction) = self.props.direction {
-            class.push(&direction.class(CARET_CLASS));
-        }
+        let class =
+            Classes::from(CARET_CLASS).extend(self.props.direction.map(|c| c.class(CARET_CLASS)));
         html! {
             <span class=class></span>
         }
