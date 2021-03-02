@@ -2,14 +2,14 @@ use muicss_yew::caret::{Caret, Direction};
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
 
-pub struct AppbarExample;
+pub struct CaretExample;
 
-impl Component for AppbarExample {
+impl Component for CaretExample {
     type Message = ();
     type Properties = ();
 
     fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        AppbarExample
+        CaretExample
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -42,5 +42,5 @@ impl Component for AppbarExample {
 
 #[wasm_bindgen(start)]
 pub fn run_app() {
-    App::<AppbarExample>::new().mount_to_body();
+    App::<CaretExample>::new().mount_to_body();
 }

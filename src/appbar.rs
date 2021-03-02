@@ -9,6 +9,7 @@ pub struct Props {
     pub class: Classes,
 }
 
+#[derive(Clone, Debug)]
 pub struct Appbar {
     props: Props,
 }

@@ -43,6 +43,7 @@ pub struct Props {
     pub disabled: bool,
 }
 
+#[derive(Clone, Debug)]
 pub struct Button {
     props: Props,
     node_ref: NodeRef,

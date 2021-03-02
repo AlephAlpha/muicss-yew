@@ -15,6 +15,7 @@ pub struct Props {
     pub direction: Option<Direction>,
 }
 
+#[derive(Clone, Debug)]
 pub struct Caret {
     props: Props,
 }
