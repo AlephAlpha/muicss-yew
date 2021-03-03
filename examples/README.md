@@ -11,4 +11,4 @@ cd appbar
 trunk serve --release
 ```
 
-If it says that the `wasm-bindgen` version does not match, you can remove the `Cargo.lock` file and retry.
+If the `wasm-bindgen` version mismatch, please ensure that you are using the latest version of `wasm-bindgen`, and then remove the `Cargo.lock` file and retry.

@@ -25,3 +25,4 @@ For details, please see the `examples` folder.
 - [x] Buttons
 - [x] Caret
 - [x] Checkbox
+- [x] Container

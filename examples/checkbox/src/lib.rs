@@ -23,13 +23,13 @@ impl Component for CheckboxExample {
     fn view(&self) -> Html {
         html! {
             <div>
-                <div id="example1">
+                <div>
                     <Checkbox label="Option one" value="opt1" />
                 </div>
-                <div id="example2">
+                <div>
                     <Checkbox label="Option two" value="opt2" checked=true />
                 </div>
-                <div id="example3">
+                <div>
                     <Checkbox label="Option three"
                         value="opt3"
                         checked=true

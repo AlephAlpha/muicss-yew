@@ -1,6 +1,7 @@
 use yew::prelude::*;
+use yewtil::NeqAssign;
 
-#[derive(Clone, Properties)]
+#[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub children: Children,
@@ -10,6 +11,7 @@ pub struct Props {
     pub fluid: bool,
 }
 
+#[derive(Clone, Debug)]
 pub struct Container {
     props: Props,
 }
@@ -26,18 +28,21 @@ impl Component for Container {
         false
     }
 
+    fn change(&mut self, props: Self::Properties) -> ShouldRender {
+        self.props.neq_assign(props)
+    }
+
     fn view(&self) -> Html {
         const CONTAINER_CLASS: &str = "mui-container";
         const CONTAINER_CLASS_FLUID: &str = "mui-container-fluid";
-        let mut class = self.props.class.clone();
-        class.push(if self.props.fluid {
+        let class = self.props.class.clone().extend(if self.props.fluid {
             CONTAINER_CLASS_FLUID
         } else {
             CONTAINER_CLASS
         });
         html! {
             <div class=class>
-                { self.props.children.render() }
+                { self.props.children.clone() }
             </div>
         }
     }

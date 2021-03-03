@@ -5,7 +5,7 @@ pub mod button;
 pub mod caret;
 pub mod checkbox;
 // pub mod col;
-// pub mod container;
+pub mod container;
 // pub mod divider;
 // pub mod form;
 // pub mod panel;
