@@ -1,13 +1,15 @@
+use muicss_yew::divider::Divider;
+use wasm_bindgen::prelude::*;
 use yew::prelude::*;
 
-pub struct Divider;
+pub struct DividerExample;
 
-impl Component for Divider {
+impl Component for DividerExample {
     type Message = ();
     type Properties = ();
 
     fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Divider
+        DividerExample
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -19,10 +21,15 @@ impl Component for Divider {
     }
 
     fn view(&self) -> Html {
-        const DIVIDER_CLASS: &str = "mui-divider";
-        let class = Classes::from(DIVIDER_CLASS);
         html! {
-            <div class=class></div>
+            <div>
+                <Divider />
+            </div>
         }
     }
+}
+
+#[wasm_bindgen(start)]
+pub fn run_app() {
+    App::<DividerExample>::new().mount_to_body();
 }

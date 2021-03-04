@@ -26,3 +26,4 @@ For details, please see the `examples` folder.
 - [x] Caret
 - [x] Checkbox
 - [x] Container
+- [x] Divider
