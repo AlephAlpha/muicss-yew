@@ -46,7 +46,6 @@ pub struct Props {
 #[derive(Clone, Debug)]
 pub struct Button {
     props: Props,
-    node_ref: NodeRef,
 }
 
 impl Component for Button {
@@ -54,10 +53,7 @@ impl Component for Button {
     type Properties = Props;
 
     fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Button {
-            props,
-            node_ref: NodeRef::default(),
-        }
+        Button { props }
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -80,8 +76,7 @@ impl Component for Button {
             .extend(self.props.variant.map(|c| c.class(BTN_CLASS)));
 
         html! {
-            <button ref=self.node_ref.clone()
-                class=class
+            <button class=class
                 onclick=&self.props.onclick
                 disabled=self.props.disabled>
                 { self.props.children.clone() }

@@ -27,3 +27,4 @@ For details, please see the `examples` folder.
 - [x] Checkbox
 - [x] Container
 - [x] Divider
+- [x] Dropdown

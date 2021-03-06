@@ -9,7 +9,7 @@ macro_rules! prop_enum {
         }
 
         impl $name {
-            fn class(self, class: &str) -> String {
+            pub fn class(self, class: &str) -> String {
                 format!(
                     "{}--{}",
                     class,
