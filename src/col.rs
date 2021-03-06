@@ -1,6 +1,7 @@
 use yew::prelude::*;
+use yewtil::NeqAssign;
 
-#[derive(Clone, Properties)]
+#[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub children: Children,
@@ -29,17 +30,18 @@ pub struct Props {
 }
 
 impl Props {
-    const fn responsive(&self) -> [(&str, &Option<u8>, &Option<u8>); 5] {
+    fn responsive(&self) -> [(&str, Option<u8>, Option<u8>); 5] {
         [
-            ("xs", &self.xs, &self.xs_offset),
-            ("sm", &self.sm, &self.sm_offset),
-            ("md", &self.md, &self.md_offset),
-            ("lg", &self.lg, &self.lg_offset),
-            ("xl", &self.xl, &self.xl_offset),
+            ("xs", self.xs, self.xs_offset),
+            ("sm", self.sm, self.sm_offset),
+            ("md", self.md, self.md_offset),
+            ("lg", self.lg, self.lg_offset),
+            ("xl", self.xl, self.xl_offset),
         ]
     }
 }
 
+#[derive(Clone, Debug)]
 pub struct Col {
     props: Props,
 }
@@ -56,10 +58,14 @@ impl Component for Col {
         false
     }
 
+    fn change(&mut self, props: Self::Properties) -> ShouldRender {
+        self.props.neq_assign(props)
+    }
+
     fn view(&self) -> Html {
         const COL_CLASS: &str = "mui-col";
-        let mut class = self.props.class.clone();
-        for &(prefix, value, offset_value) in self.props.responsive().iter() {
+        let mut class = self.props.class.clone().extend(COL_CLASS);
+        for (prefix, value, offset_value) in &self.props.responsive() {
             if let Some(value) = value {
                 class.push(&format!("{}-{}-{}", COL_CLASS, prefix, value));
             }
@@ -69,7 +75,7 @@ impl Component for Col {
         }
         html! {
             <div class=class>
-                { self.props.children.render() }
+                { self.props.children.clone() }
             </div>
         }
     }

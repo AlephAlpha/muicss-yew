@@ -1,6 +1,7 @@
 use yew::prelude::*;
+use yewtil::NeqAssign;
 
-#[derive(Clone, Properties)]
+#[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub children: Children,
@@ -26,17 +27,21 @@ impl Component for Form {
         false
     }
 
+    fn change(&mut self, props: Self::Properties) -> ShouldRender {
+        self.props.neq_assign(props)
+    }
+
     fn view(&self) -> Html {
         const FORM_CLASS: &str = "mui-form";
         const FORM_CLASS_INLINE: &str = "mui-form--inline";
-        let mut class = self.props.class.clone();
-        class.push(FORM_CLASS);
-        if self.props.inline {
-            class.push(FORM_CLASS_INLINE);
-        }
+        let class = self.props.class.clone().extend(if self.props.inline {
+            FORM_CLASS_INLINE
+        } else {
+            FORM_CLASS
+        });
         html! {
             <form class=class>
-                { self.props.children.render() }
+                { self.props.children.clone() }
             </form>
         }
     }
