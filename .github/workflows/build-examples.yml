@@ -1,0 +1,49 @@
+name: Build and Deploy Examples
+
+on:
+  push:
+    branches-ignore:
+      - gh-pages
+
+jobs:
+  build:
+    name: Build examples
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-${{ runner.os }}-${{ hashFiles('**/Cargo.toml') }}
+          restore-keys: |
+            cargo-${{ runner.os }}-
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          override: true
+          profile: minimal
+          toolchain: stable
+          target: wasm32-unknown-unknown
+
+      - name: Install trunk
+        run: |
+          cargo install trunk wasm-bindgen-cli
+
+      - name: Build examples
+        run: |
+          cd examples/gh-pages
+          trunk build --release --public-url "muicss-yew"
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: examples/gh-pages/dist

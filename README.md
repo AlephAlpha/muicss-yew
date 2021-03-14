@@ -1,25 +1,30 @@
 # muicss-yew
 
-[MUI-CSS](https://github.com/muicss/mui) Components for [Yew framework](https://github.com/yewstack/yew).
+MUICSS-yew is a component library for [Yew](https://yew.rs) framework based on the lightweight [MUI](https://www.muicss.com/) CSS framework.
 
-:construction: WIP
-
-Before I finish this project, you may use MUI-CSS directly (i.e., with CSS and JS) with Yew.
+:construction: This project is still work in progress. Many components are not yet supported. If those components are needed, you may use MUI-CSS directly (i.e., [with CSS and JS](https://www.muicss.com/docs/v1/css-js/boilerplate-html)) with Yew.
 
 For other Yew component libraries, please see [awesome-yew](https://github.com/jetli/awesome-yew#component-libraries).
 
 ## Usage
 
-Add this two line in your static html files:
+Add these two lines in your static html file:
 
 ```html
-<link href="https://cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.muicss.com/mui-0.10.3/css/mui.min.css" />
 <script src="https://cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+```
+
+Add muicss-yew to your `Cargo.toml`:
+
+```toml
+[dependencies]
+muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }
 ```
 
 For details, please see the `examples` folder.
 
-## Support features / components:
+## Support components:
 
 - [x] Appbar
 - [x] Buttons

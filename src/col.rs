@@ -70,7 +70,7 @@ impl Component for Col {
                 class.push(&format!("{}-{}-{}", COL_CLASS, prefix, value));
             }
             if let Some(value) = offset_value {
-                class.push(&format!("{}-offset-{}-{}", COL_CLASS, prefix, value));
+                class.push(&format!("{}-{}-offset-{}", COL_CLASS, prefix, value));
             }
         }
         html! {
