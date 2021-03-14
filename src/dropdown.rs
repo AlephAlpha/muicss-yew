@@ -98,7 +98,7 @@ impl Component for Dropdown {
                     disabled=self.props.disabled
                     data-mui-toggle="dropdown">
                     { &self.props.label }
-                    <Caret direction=self.props.placement.map(Placement::direction)/>
+                    <Caret direction=self.props.placement.map(Placement::direction) />
                 </button>
                 <ul class=ui_class>
                     { self.props.children.clone() }

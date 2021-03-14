@@ -10,5 +10,6 @@ edition = "2018"
 muicss-yew = { path = "../.." }
 yew = "0.17"
 yew-feather = "0.1"
+yew-router = "0.14"
 yew_prism = "0.4"
 yewtil = "0.3"

@@ -1,5 +1,7 @@
+use crate::model::AppRoute;
 use yew::prelude::*;
 use yew_prism::Prism;
+use yew_router::prelude::*;
 
 #[derive(Clone, Debug)]
 pub struct Home;
@@ -21,6 +23,23 @@ impl Component for Home {
     }
 
     fn view(&self) -> Html {
+        html! {
+            <>
+                { self.introduction() }
+                { self.usage() }
+                { self.examples() }
+            </>
+        }
+    }
+}
+
+impl Home {
+    const STATIC_HTML: &'static str = r#"<link rel="stylesheet" href="https://cdn.muicss.com/mui-0.10.3/css/mui.min.css" />
+<script src="https://cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>"#;
+    const CARGO_TOML: &'static str = r#"[dependencies]
+muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }"#;
+
+    fn introduction(&self) -> Html {
         html! {
             <>
                 <h1>
@@ -54,26 +73,24 @@ impl Component for Home {
                     </a>
                     {"." }
                 </p>
+            </>
+        }
+    }
 
+    fn usage(&self) -> Html {
+        html! {
+            <>
                 <h2>
                     { "Usage" }
                 </h2>
                 <p>
                     { "Add these two lines to your static html file:" }
                 </p>
-                <Prism
-                    code="<link rel=\"stylesheet\" href=\"https://cdn.muicss.com/mui-0.10.3/css/mui.min.css\" />\n\
-                          <script src=\"https://cdn.muicss.com/mui-0.10.3/js/mui.min.js\"></script>"
-                    language="html"
-                />
+                <Prism code=Self::STATIC_HTML language="html" />
                 <p>
                     { "Add muicss-yew to your Cargo.toml:" }
                 </p>
-                <Prism
-                    code="[dependencies]\n\
-                    muicss-yew = { git = \"https://github.com/AlephAlpha/muicss-yew\" }"
-                    language="toml"
-                />
+                <Prism code=Self::CARGO_TOML language="toml" />
                 <p>
                     { "For details, please see the " }
                     <a href="https://github.com/AlephAlpha/muicss-yew/tree/master/examples">
@@ -81,6 +98,23 @@ impl Component for Home {
                     </a>
                     {"." }
                 </p>
+            </>
+        }
+    }
+
+    fn examples(&self) -> Html {
+        html! {
+            <>
+                <h2>
+                    { "Examples" }
+                </h2>
+                <ul>
+                    <li>
+                        <RouterAnchor<AppRoute> route=AppRoute::Appbar>
+                            { "Appbar" }
+                        </RouterAnchor<AppRoute>>
+                    </li>
+                </ul>
             </>
         }
     }

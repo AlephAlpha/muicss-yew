@@ -34,7 +34,7 @@ impl Component for Header {
                                     </td>
                                     <td class="mui--text-right">
                                         <a href="https://github.com/AlephAlpha/muicss-yew">
-                                            <Github color="#FFF"/>
+                                            <Github color="#FFF" />
                                         </a>
                                     </td>
                                 </tr>
