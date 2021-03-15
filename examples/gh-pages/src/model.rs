@@ -1,17 +1,10 @@
 use crate::{
     components::{header::Header, main::Main},
     pages::{appbar::AppbarExamples, home::Home},
+    switch::{AppRoute, AppRouter, PublicUrlSwitch},
 };
 use yew::prelude::*;
 use yew_router::prelude::*;
-
-#[derive(Clone, Debug, Switch)]
-pub enum AppRoute {
-    #[to = "/appbar"]
-    Appbar,
-    #[to = "/"]
-    Home,
-}
 
 pub struct Model;
 
@@ -36,7 +29,7 @@ impl Component for Model {
             <>
                 <Header />
                 <Main>
-                    <Router<AppRoute> render=Router::render(Self::switch) />
+                    <AppRouter render=Router::render(Self::switch) />
                 </Main>
             </>
         }
@@ -44,8 +37,8 @@ impl Component for Model {
 }
 
 impl Model {
-    fn switch(switch: AppRoute) -> Html {
-        match switch {
+    fn switch(switch: PublicUrlSwitch) -> Html {
+        match switch.route() {
             AppRoute::Appbar => html! { <AppbarExamples /> },
             AppRoute::Home => html! { <Home /> },
         }

@@ -1,7 +1,6 @@
-use crate::model::AppRoute;
+use crate::switch::{AppAnchor, AppRoute};
 use yew::prelude::*;
 use yew_prism::Prism;
-use yew_router::prelude::*;
 
 #[derive(Clone, Debug)]
 pub struct Home;
@@ -110,9 +109,9 @@ muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }"#;
                 </h2>
                 <ul>
                     <li>
-                        <RouterAnchor<AppRoute> route=AppRoute::Appbar>
+                        <AppAnchor route=AppRoute::Appbar>
                             { "Appbar" }
-                        </RouterAnchor<AppRoute>>
+                        </AppAnchor>
                     </li>
                 </ul>
             </>
