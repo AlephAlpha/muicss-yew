@@ -34,7 +34,9 @@ impl Component for Example {
     fn view(&self) -> Html {
         html! {
             <Panel>
-                { self.props.children.clone() }
+                <div>
+                    { self.props.children.clone() }
+                </div>
                 <Prism code=self.props.code.clone() language="rust" />
             </Panel>
         }

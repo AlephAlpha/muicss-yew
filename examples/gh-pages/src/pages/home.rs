@@ -113,6 +113,11 @@ muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }"#;
                             { "Appbar" }
                         </AppAnchor>
                     </li>
+                    <li>
+                        <AppAnchor route=AppRoute::Buttons>
+                            { "Buttons" }
+                        </AppAnchor>
+                    </li>
                 </ul>
             </>
         }

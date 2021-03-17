@@ -1,3 +1,5 @@
+#![recursion_limit = "512"]
+
 mod components;
 mod model;
 mod pages;

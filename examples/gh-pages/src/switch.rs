@@ -8,8 +8,10 @@ use yew_router::prelude::*;
 
 #[derive(Clone, Debug, Switch)]
 pub enum AppRoute {
-    #[to = "/appbar"]
+    #[to = "/#appbar"]
     Appbar,
+    #[to = "/#buttons"]
+    Buttons,
     #[to = "/"]
     Home,
 }

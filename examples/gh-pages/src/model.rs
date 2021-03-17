@@ -1,6 +1,6 @@
 use crate::{
     components::{header::Header, main::Main},
-    pages::{appbar::AppbarExamples, home::Home},
+    pages::{appbar::AppbarExamples, buttons::ButtonExamples, home::Home},
     switch::{AppRoute, AppRouter, PublicUrlSwitch},
 };
 use yew::prelude::*;
@@ -40,6 +40,7 @@ impl Model {
     fn switch(switch: PublicUrlSwitch) -> Html {
         match switch.route() {
             AppRoute::Appbar => html! { <AppbarExamples /> },
+            AppRoute::Buttons => html! { <ButtonExamples /> },
             AppRoute::Home => html! { <Home /> },
         }
     }
