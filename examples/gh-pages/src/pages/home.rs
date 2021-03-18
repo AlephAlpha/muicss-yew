@@ -91,11 +91,7 @@ muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }"#;
                 </p>
                 <Prism code=Self::CARGO_TOML language="toml" />
                 <p>
-                    { "For details, please see the " }
-                    <a href="https://github.com/AlephAlpha/muicss-yew/tree/master/examples">
-                        {"examples"}
-                    </a>
-                    {"." }
+                    { "For details, please see the examples." }
                 </p>
             </>
         }
@@ -116,6 +112,21 @@ muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }"#;
                     <li>
                         <AppAnchor route=AppRoute::Buttons>
                             { "Buttons" }
+                        </AppAnchor>
+                    </li>
+                    <li>
+                        <AppAnchor route=AppRoute::Caret>
+                            { "Caret" }
+                        </AppAnchor>
+                    </li>
+                    <li>
+                        <AppAnchor route=AppRoute::Checkbox>
+                            { "Checkbox" }
+                        </AppAnchor>
+                    </li>
+                    <li>
+                        <AppAnchor route=AppRoute::Container>
+                            { "Container" }
                         </AppAnchor>
                     </li>
                 </ul>

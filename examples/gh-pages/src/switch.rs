@@ -12,6 +12,12 @@ pub enum AppRoute {
     Appbar,
     #[to = "/#buttons"]
     Buttons,
+    #[to = "/#caret"]
+    Caret,
+    #[to = "/#checkbox"]
+    Checkbox,
+    #[to = "/#container"]
+    Container,
     #[to = "/"]
     Home,
 }

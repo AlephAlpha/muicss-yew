@@ -1,6 +1,9 @@
 use crate::{
     components::{header::Header, main::Main},
-    pages::{appbar::AppbarExamples, buttons::ButtonExamples, home::Home},
+    pages::{
+        appbar::AppbarExamples, buttons::ButtonExamples, caret::CaretExamples,
+        checkbox::CheckboxExamples, container::ContainerExamples, home::Home,
+    },
     switch::{AppRoute, AppRouter, PublicUrlSwitch},
 };
 use yew::prelude::*;
@@ -41,6 +44,9 @@ impl Model {
         match switch.route() {
             AppRoute::Appbar => html! { <AppbarExamples /> },
             AppRoute::Buttons => html! { <ButtonExamples /> },
+            AppRoute::Caret => html! { <CaretExamples /> },
+            AppRoute::Checkbox => html! { <CheckboxExamples /> },
+            AppRoute::Container => html! { <ContainerExamples /> },
             AppRoute::Home => html! { <Home /> },
         }
     }

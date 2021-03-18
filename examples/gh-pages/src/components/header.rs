@@ -1,3 +1,4 @@
+use crate::switch::{AppAnchor, AppRoute};
 use muicss_yew::{appbar::Appbar, container::Container};
 use yew::prelude::*;
 use yew_feather::github::Github;
@@ -30,7 +31,11 @@ impl Component for Header {
                             <tbody>
                                 <tr class="mui--appbar-height">
                                     <td class="mui--text-headline">
-                                        { "MUICSS-Yew" }
+                                        <AppAnchor route=AppRoute::Home>
+                                            <span id="title" >
+                                                { "MUICSS-Yew" }
+                                            </span>
+                                        </AppAnchor>
                                     </td>
                                     <td class="mui--text-right">
                                         <a href="https://github.com/AlephAlpha/muicss-yew">
