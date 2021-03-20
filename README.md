@@ -31,7 +31,7 @@ For details, please see the `examples` folder.
 - [x] [Caret](https://alephalpha.github.io/muicss-yew/#caret)
 - [x] [Checkbox](https://alephalpha.github.io/muicss-yew/#checkbox)
 - [x] [Container](https://alephalpha.github.io/muicss-yew/#container)
-- [x] Divider
-- [x] Dropdown
+- [x] [Divider](https://alephalpha.github.io/muicss-yew/#divider)
+- [x] [Dropdowns](https://alephalpha.github.io/muicss-yew/#dropdowns)
 - [x] Grid
 - [x] Panel

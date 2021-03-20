@@ -129,6 +129,16 @@ muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }"#;
                             { "Container" }
                         </AppAnchor>
                     </li>
+                    <li>
+                        <AppAnchor route=AppRoute::Divider>
+                            { "Divider" }
+                        </AppAnchor>
+                    </li>
+                    <li>
+                        <AppAnchor route=AppRoute::Dropdowns>
+                            { "Dropdowns" }
+                        </AppAnchor>
+                    </li>
                 </ul>
             </>
         }

@@ -1,17 +1,17 @@
 use crate::components::example::Example;
-use muicss_yew::container::Container;
+use muicss_yew::divider::Divider;
 use yew::prelude::*;
 use yew_prism::Prism;
 
 #[derive(Clone, Debug)]
-pub struct ContainerExamples;
+pub struct DividerExamples;
 
-impl Component for ContainerExamples {
+impl Component for DividerExamples {
     type Message = ();
     type Properties = ();
 
     fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        ContainerExamples
+        DividerExamples
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -27,25 +27,24 @@ impl Component for ContainerExamples {
             <>
                 { self.introduction() }
                 { self.example1() }
-                { self.example2() }
             </>
         }
     }
 }
 
-impl ContainerExamples {
-    const IMPORT: &'static str = r#"use muicss_yew::container::Container;"#;
+impl DividerExamples {
+    const IMPORT: &'static str = r#"use muicss_yew::divider::Divider;"#;
 
     fn introduction(&self) -> Html {
         html! {
             <>
                 <h1>
-                    { "Container" }
+                    { "Divider" }
                 </h1>
                 <Prism code=Self::IMPORT language="rust" />
                 <p>
                     { "See " }
-                    <a href="https://www.muicss.com/docs/v1/css-js/container">
+                    <a href="https://www.muicss.com/docs/v1/css-js/dividers">
                         { "MUI's website" }
                     </a>
                     { " for details." }
@@ -57,24 +56,8 @@ impl ContainerExamples {
     fn example1(&self) -> Html {
         html! {
             <>
-                <h2>
-                    { "Fixed Container" }
-                </h2>
-                <Example code=include_str!("../examples/container_example1.rs")>
-                    { include!("../examples/container_example1.rs") }
-                </Example>
-            </>
-        }
-    }
-
-    fn example2(&self) -> Html {
-        html! {
-            <>
-                <h2>
-                    { "Fluid Container" }
-                </h2>
-                <Example code=include_str!("../examples/container_example2.rs")>
-                    { include!("../examples/container_example2.rs") }
+                <Example code=include_str!("../examples/divider_example1.rs")>
+                    { include!("../examples/divider_example1.rs") }
                 </Example>
             </>
         }

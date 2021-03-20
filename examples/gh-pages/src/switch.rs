@@ -18,6 +18,10 @@ pub enum AppRoute {
     Checkbox,
     #[to = "/#container"]
     Container,
+    #[to = "/#divider"]
+    Divider,
+    #[to = "/#dropdowns"]
+    Dropdowns,
     #[to = "/"]
     Home,
 }

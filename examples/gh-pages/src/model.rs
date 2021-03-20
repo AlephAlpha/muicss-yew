@@ -2,7 +2,8 @@ use crate::{
     components::{header::Header, main::Main},
     pages::{
         appbar::AppbarExamples, buttons::ButtonExamples, caret::CaretExamples,
-        checkbox::CheckboxExamples, container::ContainerExamples, home::Home,
+        checkbox::CheckboxExamples, container::ContainerExamples, divider::DividerExamples,
+        dropdowns::DropdownExamples, home::Home,
     },
     switch::{AppRoute, AppRouter, PublicUrlSwitch},
 };
@@ -47,6 +48,8 @@ impl Model {
             AppRoute::Caret => html! { <CaretExamples /> },
             AppRoute::Checkbox => html! { <CheckboxExamples /> },
             AppRoute::Container => html! { <ContainerExamples /> },
+            AppRoute::Divider => html! { <DividerExamples /> },
+            AppRoute::Dropdowns => html! { <DropdownExamples /> },
             AppRoute::Home => html! { <Home /> },
         }
     }
