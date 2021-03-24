@@ -1,0 +1,5 @@
+html! {
+    <Panel>
+        { "Panel" }
+    </Panel>
+}

@@ -33,5 +33,5 @@ For details, please see the `examples` folder.
 - [x] [Container](https://alephalpha.github.io/muicss-yew/#container)
 - [x] [Divider](https://alephalpha.github.io/muicss-yew/#divider)
 - [x] [Dropdowns](https://alephalpha.github.io/muicss-yew/#dropdowns)
-- [x] Grid
-- [x] Panel
+- [x] [Grid](https://alephalpha.github.io/muicss-yew/#grid)
+- [x] [Panels](https://alephalpha.github.io/muicss-yew/#panels)

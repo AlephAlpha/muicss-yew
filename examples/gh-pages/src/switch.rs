@@ -22,6 +22,10 @@ pub enum AppRoute {
     Divider,
     #[to = "/#dropdowns"]
     Dropdowns,
+    #[to = "/#grid"]
+    Grid,
+    #[to = "/#panels"]
+    Panels,
     #[to = "/"]
     Home,
 }

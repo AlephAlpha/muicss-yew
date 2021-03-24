@@ -3,7 +3,7 @@ use crate::{
     pages::{
         appbar::AppbarExamples, buttons::ButtonExamples, caret::CaretExamples,
         checkbox::CheckboxExamples, container::ContainerExamples, divider::DividerExamples,
-        dropdowns::DropdownExamples, home::Home,
+        dropdowns::DropdownExamples, grid::GridExamples, home::Home, panels::PanelExamples,
     },
     switch::{AppRoute, AppRouter, PublicUrlSwitch},
 };
@@ -50,7 +50,9 @@ impl Model {
             AppRoute::Container => html! { <ContainerExamples /> },
             AppRoute::Divider => html! { <DividerExamples /> },
             AppRoute::Dropdowns => html! { <DropdownExamples /> },
+            AppRoute::Grid => html! { <GridExamples /> },
             AppRoute::Home => html! { <Home /> },
+            AppRoute::Panels => html! { <PanelExamples /> },
         }
     }
 }

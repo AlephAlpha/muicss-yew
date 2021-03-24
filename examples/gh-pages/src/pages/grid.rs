@@ -1,21 +1,17 @@
 use crate::components::example::Example;
-use muicss_yew::{
-    button::Color,
-    dropdown::{Alignment, Dropdown, Placement},
-    dropdown_item::DropdownItem,
-};
+use muicss_yew::{col::Col, container::Container, row::Row};
 use yew::prelude::*;
 use yew_prism::Prism;
 
 #[derive(Clone, Debug)]
-pub struct DropdownExamples;
+pub struct GridExamples;
 
-impl Component for DropdownExamples {
+impl Component for GridExamples {
     type Message = ();
     type Properties = ();
 
     fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        DropdownExamples
+        GridExamples
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -33,27 +29,26 @@ impl Component for DropdownExamples {
                 { self.example1() }
                 { self.example2() }
                 { self.example3() }
-                { self.example4() }
             </>
         }
     }
 }
 
-impl DropdownExamples {
-    const IMPORT: &'static str = r#"use muicss_yew::button::Color;
-use muicss_yew::dropdown::{Alignment, Dropdown, Placement};
-use muicss_yew::dropdown_item::DropdownItem;"#;
+impl GridExamples {
+    const IMPORT: &'static str = r#"use muicss_yew::container::Container;
+use muicss_yew::col::Col;
+use muicss_yew::row::Row;"#;
 
     fn introduction(&self) -> Html {
         html! {
             <>
                 <h1>
-                    { "Dropdowns" }
+                    { "Grid" }
                 </h1>
                 <Prism code=Self::IMPORT language="rust" />
                 <p>
                     { "See " }
-                    <a href="https://www.muicss.com/docs/v1/css-js/dropdowns">
+                    <a href="https://www.muicss.com/docs/v1/css-js/grid">
                         { "MUI's website" }
                     </a>
                     { " for details." }
@@ -66,10 +61,10 @@ use muicss_yew::dropdown_item::DropdownItem;"#;
         html! {
             <>
                 <h2>
-                    { "Dropdown (default)" }
+                    { "Example: Stacked-to-horizontal" }
                 </h2>
-                <Example code=include_str!("../examples/dropdowns_example1.rs")>
-                    { include!("../examples/dropdowns_example1.rs") }
+                <Example code=include_str!("../examples/grid_example1.rs")>
+                    { include!("../examples/grid_example1.rs") }
                 </Example>
             </>
         }
@@ -79,10 +74,10 @@ use muicss_yew::dropdown_item::DropdownItem;"#;
         html! {
             <>
                 <h2>
-                    { "Dropup" }
+                    { "Example: Mobile and desktop" }
                 </h2>
-                <Example code=include_str!("../examples/dropdowns_example2.rs")>
-                    { include!("../examples/dropdowns_example2.rs") }
+                <Example code=include_str!("../examples/grid_example2.rs")>
+                    { include!("../examples/grid_example2.rs") }
                 </Example>
             </>
         }
@@ -92,23 +87,10 @@ use muicss_yew::dropdown_item::DropdownItem;"#;
         html! {
             <>
                 <h2>
-                    { "Dropright" }
+                    { "Example: Offsetting columns" }
                 </h2>
-                <Example code=include_str!("../examples/dropdowns_example3.rs")>
-                    { include!("../examples/dropdowns_example3.rs") }
-                </Example>
-            </>
-        }
-    }
-
-    fn example4(&self) -> Html {
-        html! {
-            <>
-                <h2>
-                    { "Dropleft" }
-                </h2>
-                <Example code=include_str!("../examples/dropdowns_example4.rs")>
-                    { include!("../examples/dropdowns_example4.rs") }
+                <Example code=include_str!("../examples/grid_example3.rs")>
+                    { include!("../examples/grid_example3.rs") }
                 </Example>
             </>
         }

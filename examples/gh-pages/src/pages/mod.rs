@@ -5,4 +5,6 @@ pub mod checkbox;
 pub mod container;
 pub mod divider;
 pub mod dropdowns;
+pub mod grid;
 pub mod home;
+pub mod panels;
