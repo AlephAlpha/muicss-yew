@@ -13,4 +13,4 @@ yew = "0.17"
 yewtil = "0.3"
 
 [workspace]
-members = ["examples/*"]
+members = ["gh-pages"]

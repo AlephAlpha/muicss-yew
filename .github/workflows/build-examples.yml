@@ -38,7 +38,7 @@ jobs:
 
       - name: Build examples
         run: |
-          cd examples/gh-pages
+          cd gh-pages
           trunk build --release --public-url "muicss-yew"
 
       - name: Deploy to GitHub Pages
@@ -46,4 +46,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: examples/gh-pages/dist
+          folder: gh-pages/dist

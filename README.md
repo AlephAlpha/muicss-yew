@@ -22,9 +22,9 @@ Add muicss-yew to your `Cargo.toml`:
 muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }
 ```
 
-For details, please see the `examples` folder.
+For details, please see the following examples.
 
-## Support components:
+## Supported components and examples
 
 - [x] [Appbar](https://alephalpha.github.io/muicss-yew/#appbar)
 - [x] [Buttons](https://alephalpha.github.io/muicss-yew/#buttons)

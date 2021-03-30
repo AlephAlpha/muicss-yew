@@ -8,7 +8,7 @@ edition = "2018"
 
 [dependencies]
 log = "0.4"
-muicss-yew = { path = "../.." }
+muicss-yew = { path = "../" }
 wasm-logger = "0.2"
 yew = "0.17"
 yew-feather = "0.1"
