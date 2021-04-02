@@ -33,8 +33,7 @@ jobs:
           target: wasm32-unknown-unknown
 
       - name: Install trunk
-        run: |
-          cargo install trunk wasm-bindgen-cli
+        uses: jetli/trunk-action@v0.1.0
 
       - name: Build examples
         run: |
