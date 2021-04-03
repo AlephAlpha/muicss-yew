@@ -89,7 +89,7 @@ impl Component for Dropdown {
             .extend(self.props.variant.map(|c| c.class(BTN_CLASS)));
 
         const MENU_CLASS: &str = "mui-dropdown__menu";
-        let ui_class =
+        let ul_class =
             Classes::from(MENU_CLASS).extend(self.props.alignment.map(|c| c.class(MENU_CLASS)));
 
         html! {
@@ -100,7 +100,7 @@ impl Component for Dropdown {
                     { &self.props.label }
                     <Caret direction=self.props.placement.map(Placement::direction) />
                 </button>
-                <ul class=ui_class>
+                <ul class=ul_class>
                     { self.props.children.clone() }
                 </ul>
             </div>

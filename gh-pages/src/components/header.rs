@@ -33,12 +33,7 @@ impl Component for Header {
                                     <td class="mui--text-headline">
                                         <AppAnchor route=AppRoute::Home>
                                             <span id="title" >
-                                                { "Home" }
-                                            </span>
-                                        </AppAnchor>
-                                        <AppAnchor route=AppRoute::Home>
-                                            <span id="title" >
-                                                { "Home" }
+                                                { "MUICSS-Yew" }
                                             </span>
                                         </AppAnchor>
                                     </td>

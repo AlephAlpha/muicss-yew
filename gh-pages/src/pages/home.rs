@@ -145,8 +145,18 @@ muicss-yew = { git = "https://github.com/AlephAlpha/muicss-yew" }"#;
                         </AppAnchor>
                     </li>
                     <li>
+                        <AppAnchor route=AppRoute::Input>
+                            { "Input" }
+                        </AppAnchor>
+                    </li>
+                    <li>
                         <AppAnchor route=AppRoute::Panels>
                             { "Panels" }
+                        </AppAnchor>
+                    </li>
+                    <li>
+                        <AppAnchor route=AppRoute::Textarea>
+                            { "Textarea" }
                         </AppAnchor>
                     </li>
                 </ul>

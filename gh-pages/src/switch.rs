@@ -24,8 +24,12 @@ pub enum AppRoute {
     Dropdowns,
     #[to = "/#grid"]
     Grid,
+    #[to = "/#input"]
+    Input,
     #[to = "/#panels"]
     Panels,
+    #[to = "/#textarea"]
+    Textarea,
     #[to = "/"]
     Home,
 }

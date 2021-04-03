@@ -34,4 +34,6 @@ For details, please see the following examples.
 - [x] [Divider](https://alephalpha.github.io/muicss-yew/#divider)
 - [x] [Dropdowns](https://alephalpha.github.io/muicss-yew/#dropdowns)
 - [x] [Grid](https://alephalpha.github.io/muicss-yew/#grid)
+- [x] [Input](https://alephalpha.github.io/muicss-yew/#input)
 - [x] [Panels](https://alephalpha.github.io/muicss-yew/#panels)
+- [x] [Textarea](https://alephalpha.github.io/muicss-yew/#textarea)

@@ -7,4 +7,6 @@ pub mod divider;
 pub mod dropdowns;
 pub mod grid;
 pub mod home;
+pub mod input;
 pub mod panels;
+pub mod textarea;

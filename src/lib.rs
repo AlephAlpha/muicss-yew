@@ -10,5 +10,7 @@ pub mod divider;
 pub mod dropdown;
 pub mod dropdown_item;
 pub mod form;
+pub mod input;
 pub mod panel;
 pub mod row;
+pub mod textarea;
