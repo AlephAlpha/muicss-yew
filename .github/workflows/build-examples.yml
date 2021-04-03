@@ -32,6 +32,9 @@ jobs:
           toolchain: stable
           target: wasm32-unknown-unknown
 
+      - name: Install wasm-bindgen
+        uses: jetli/wasm-bindgen-action@v0.1.0
+
       - name: Install trunk
         uses: jetli/trunk-action@v0.1.0
 
