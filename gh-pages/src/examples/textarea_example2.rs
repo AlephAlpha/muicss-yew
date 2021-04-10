@@ -1,6 +1,10 @@
 html! {
     <>
-        <Textarea label="Input 1" />
-        <Textarea label="Input 2" value="Value" />
+        <Textarea>
+            { "Input 1" }
+        </Textarea>
+        <Textarea value="Value" >
+            { "Input 2" }
+        </Textarea>
     </>
 }

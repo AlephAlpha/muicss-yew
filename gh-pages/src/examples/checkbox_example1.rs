@@ -1,16 +1,19 @@
 html! {
     <>
         <div>
-            <Checkbox label="Option one" value="opt1" />
+            <Checkbox value="opt1" >
+                { "Option one" }
+            </Checkbox>
         </div>
         <div>
-            <Checkbox label="Option two" value="opt2" checked=true />
+            <Checkbox value="opt2" checked=true >
+                { "Option two" }
+            </Checkbox>
         </div>
         <div>
-            <Checkbox label="Option three is disabled"
-                value="opt3"
-                checked=true
-                disabled=true />
+            <Checkbox value="opt3" checked=true disabled=true >
+                { "Option three is disabled" }
+            </Checkbox>
         </div>
     </>
 }

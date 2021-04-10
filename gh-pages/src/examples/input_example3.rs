@@ -1,6 +1,10 @@
 html! {
     <>
-        <Input label="Input 1" floating_label=true/>
-        <Input label="Input 2" floating_label=true value="Value" />
+        <Input floating_label=true >
+            { "Input 1" }
+        </Input>
+        <Input floating_label=true value="Value" >
+            { "Input 2" }
+        </Input>
     </>
 }

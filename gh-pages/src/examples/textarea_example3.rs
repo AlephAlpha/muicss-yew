@@ -1,6 +1,10 @@
 html! {
     <>
-        <Textarea label="Input 1" floating_label=true/>
-        <Textarea label="Input 2" floating_label=true value="Value" />
+        <Textarea floating_label=true>
+            { "Input 1" }
+        </Textarea>
+        <Textarea floating_label=true value="Value" >
+            { "Input 2" }
+        </Textarea>
     </>
 }

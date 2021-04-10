@@ -1,6 +1,10 @@
 html! {
     <>
-        <Input label="Input 1" />
-        <Input label="Input 2" value="Value" />
+        <Input>
+            { "Input 1" }
+        </Input>
+        <Input value="Value" >
+            { "Input 2" }
+        </Input>
     </>
 }

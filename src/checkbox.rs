@@ -4,6 +4,8 @@ use yewtil::NeqAssign;
 #[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
+    pub children: Children,
+    #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
     pub onchange: Callback<ChangeData>,
@@ -11,8 +13,6 @@ pub struct Props {
     pub checked: bool,
     #[prop_or_default]
     pub disabled: bool,
-    #[prop_or_default]
-    pub label: String,
     #[prop_or_default]
     pub value: Option<String>,
 }
@@ -22,12 +22,8 @@ pub struct Checkbox {
     props: Props,
 }
 
-pub enum Msg {
-    Change(ChangeData),
-}
-
 impl Component for Checkbox {
-    type Message = Msg;
+    type Message = ();
     type Properties = Props;
 
     fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
@@ -53,7 +49,7 @@ impl Component for Checkbox {
                         onchange=&self.props.onchange
                         disabled=self.props.disabled
                         value=self.props.value.as_deref().unwrap_or("on") />
-                    { &self.props.label }
+                    { self.props.children.clone() }
                 </label>
             </div>
         }

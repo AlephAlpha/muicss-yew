@@ -33,6 +33,8 @@ impl InputType {
 #[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
+    pub children: Children,
+    #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
     pub onchange: Callback<ChangeData>,
@@ -45,8 +47,6 @@ pub struct Props {
     #[prop_or_default]
     pub floating_label: bool,
     #[prop_or_default]
-    pub label: Option<String>,
-    #[prop_or_default]
     pub value: String,
     #[prop_or_default]
     pub placeholder: String,
@@ -57,12 +57,8 @@ pub struct Input {
     props: Props,
 }
 
-pub enum Msg {
-    Change(ChangeData),
-}
-
 impl Component for Input {
-    type Message = Msg;
+    type Message = ();
     type Properties = Props;
 
     fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
@@ -89,14 +85,14 @@ impl Component for Input {
             .extend(self.props.invalid.then(|| INVALID_CLASS))
             .extend(self.props.floating_label.then(|| FLOAT_LABEL_CLASS));
 
-        let label = if let Some(label) = &self.props.label {
+        let label = if self.props.children.is_empty() {
+            Html::default()
+        } else {
             html! {
                 <label>
-                    { label }
+                    { self.props.children.clone() }
                 </label>
             }
-        } else {
-            Html::default()
         };
 
         html! {
